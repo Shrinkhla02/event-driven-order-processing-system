@@ -6,9 +6,24 @@ This project is a cloud-native, event-driven microservices system built using Sp
 
 ## Architecture
 
-Client → Order Service → Kafka (order-created topic) ↓ Payment Service Inventory Service Notification Service
+```text
+Client
+  |
+  v
+Order Service
+  |
+  v
+Kafka Topic (order-created)
+  |
+  v
+--------------------------------------
+|            |              |         |
+Payment   Inventory   Notification   (Consumers)
+Service    Service       Service
+--------------------------------------
+```
 
-The system follows an event-driven architecture where services communicate through Kafka events instead of direct synchronous calls.
+The system follows an event-driven architecture where services communicate using Kafka events instead of direct synchronous calls.
 
 ## Design Principles
 
